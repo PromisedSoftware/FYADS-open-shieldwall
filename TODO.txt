@@ -1,0 +1,5 @@
+observer  = play button;
+if video stopped try{
+document.querySelector("yt-confirm-dialog-renderer button").click();
+}
+

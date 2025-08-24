@@ -1,0 +1,44 @@
+{
+    "manifest_version": 3,
+    "name": "FYADS - Open shieldwall",
+    "version": "2.4.8",
+    "description": "Peace among YT ads",
+    "content_scripts": [
+        {
+            "matches": ["https://www.youtube.com/*"],
+            "js": [
+                "js/lib.js",
+                "js/LimitedObserver.js",
+                "js/VideoManager.js",
+                "js/WatchManager.js",
+                "js/FYADS.js",
+                "js/main.js"
+            ]
+        },
+        {
+            "matches": ["https://www.youtube.com/*"],
+            "js": ["js/before_load/injector.js"],
+            "run_at": "document_start"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["js/before_load/requestInterceptor.js"],
+            "matches": ["https://www.youtube.com/*"]
+        }
+    ],
+    "icons": {
+        "16": "ico.png",
+        "24": "ico.png",
+        "32": "ico.png",
+        "48": "ico.png",
+        "64": "ico.png",
+        "86": "ico.png",
+        "128": "ico.png"
+    },
+    "action": {},
+    "permissions": [],
+    "host_permissions": [
+        "https://www.youtube.com/*"
+    ]
+}
