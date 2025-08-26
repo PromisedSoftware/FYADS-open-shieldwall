@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "FYADS - Open shieldwall",
-    "version": "2.4.8",
+    "version": "2.4.9",
     "description": "Peace among YT ads",
     "content_scripts": [
         {
@@ -10,7 +10,6 @@
                 "js/lib.js",
                 "js/LimitedObserver.js",
                 "js/VideoManager.js",
-                "js/WatchManager.js",
                 "js/FYADS.js",
                 "js/main.js"
             ]

@@ -1,5 +1,3 @@
-FIRST AD AFTER FIRST BOOT MAY NOT BE SKIPPED, but then should work ok  
-
 This is open source unpacked extension, you are allowed to do anything with it.
 This extension works for Google Chrome browser, JavaScript code should work for all browsers.
 This does not block all ads, it removes unblocked ads instead.
@@ -9,4 +7,5 @@ and by the date 24/March/2024 is Free for personal and commercial use with attri
 Icon image link: https://www.flaticon.com/free-icon/fuck-you_11004580
 
 Issues:
-- Youtube blocks click on skip ad button since script does not invoke true event.
+a)  Youtube blocks click on skip ad button since script does not invoke true event.
+    - preparing workaround

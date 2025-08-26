@@ -1,12 +1,19 @@
-const FYADS = (videoManager,watchManager)=>{
+const FYADS = (...managers)=>{
     return {
-        videoAdSkipping:function(enable){
-            videoManager.setEnabled(enable);
+        enableAll:(isEnabled)=>{
+            managers.forEach(manager=>{
+                manager.setEnabled(isEnabled);
+            });
+        },
+        enable:(manager)=>{
+            managers.filter(m=>m.getId() === manager.getId())
+                .forEach(manager=>manager.setEnabled(true));
             return this;
         },
-        confirmWatching:function(enable){
-            watchManager.setEnabled(enable);
+        disable:(manager)=>{
+            managers.filter(m=>m.getId() == manager.getId())
+                .forEach(manager=>manager.setEnabled(false));
             return this;
-        }
+        },
     }
 }

@@ -1,6 +1,10 @@
 const VideoManager = function () {
-    let ytvideo = document.querySelector(".video-stream");
-    let progressbar = document.querySelector('.ytp-progress-bar-container .ytp-play-progress');
+    const NAME_ID = "video_manager";
+    const videoSelector = ".video-stream.html5-main-video";
+    const progressBarSelector = ".ytp-progress-bar-container .ytp-play-progress";
+    let ytvideo = document.querySelector(videoSelector);
+
+    let progressbar = document.querySelector(progressBarSelector);
     const adProgressBarColor = "rgb(255, 204, 0)";
 
     function isAdPlaying() {
@@ -10,7 +14,7 @@ const VideoManager = function () {
             currentProgressBarColor = window.getComputedStyle(progressbar)
                 .getPropertyValue("background-color");
         } catch (error) {
-            progressbar = document.querySelector('.ytp-progress-bar-container .ytp-play-progress');
+            progressbar = document.querySelector(progressBarSelector);
         }
         return currentProgressBarColor === adProgressBarColor;
     }
@@ -21,40 +25,34 @@ const VideoManager = function () {
                 ytvideo.currentTime = ytvideo.duration + 1;
             }
         } catch (error) {
-            ytvideo = document.querySelector(".video-stream");
+            ytvideo = document.querySelector(videoSelector);
             skipAd();
         }
     }
 
     let observer;
     let observedNode = null;
-    const observerConfig = { attributes: true, childList: true, subtree: true };
+    const observerConfig = { attributes: true, childList: false, subtree: false };
     const observerCallback = function(){
-        if (isAdPlaying()) {
-            skipAd();
-        }
+        console.log("callback called")
+        if (isAdPlaying()) skipAd();
     }
 
-    function enableObserver() {
-        window.addEventListener("hashchange", async () => {
-            if (!window.location.href.includes("youtube.com/watch")) return;
-            observedNode = await forceFindingNode(".html5-video-player");
-            observer = new LimitedMutationObserver(
-                observerCallback, observerConfig, observedNode
-            );
-            observer.observe();
-        });
-        window.dispatchEvent(new Event("hashchange"));
+    async function enableObserver() {
+        observedNode = await forceFindingNode(".html5-video-player#movie_player",20,null);
+        console.log(observedNode);
+        console.log("constr obs");
+        observer = new LimitedMutationObserver(
+                observerCallback, observerConfig, observedNode);
+        observer.observe();
     }
 
     function disableObserver(){
         observer.disconnect();
-        observer.takeRecords();
-        observedNode = null;
-        observer = null;
     }
 
     return {
+        getId:()=>{return NAME_ID},
         setEnabled: (isEnabled) => {
             if (isEnabled) enableObserver();
             else disableObserver();
