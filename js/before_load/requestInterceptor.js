@@ -1,3 +1,9 @@
+/* 
+    --------------------------------------------------------------------------------------
+    THIS SCRIPT IS DISABLED IN injector.js SINCE IS BEING DETECTED BY CHROME AS AN ADBLOCK
+    --------------------------------------------------------------------------------------
+*/
+
 // https://googlesyndication.com
 // https://ad.doubleclick.net
 // https://googleads.g.doubleclick.net/pagead/id
