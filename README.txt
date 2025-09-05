@@ -7,5 +7,5 @@ and by the date 24/March/2024 is Free for personal and commercial use with attri
 Icon image link: https://www.flaticon.com/free-icon/fuck-you_11004580
 
 Issues:
-a)  Youtube blocks click on skip ad button since script does not invoke true event.
+a)  Youtube blocks click on skip ad button since script does not invoke trusted event.
     - preparing workaround
